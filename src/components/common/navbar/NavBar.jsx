@@ -1,23 +1,32 @@
 import { useEffect, useState } from "react";
-import logo from "../../../assets/logo.png";
 import { Link } from "react-scroll";
 
 const navItems = [
   { id: 1, name: "Home", url: "introduction" },
   { id: 2, name: "About Me", url: "profile" },
-  { id: 3, name: "Experience", url: "work-process" },
-  { id: 4, name: "Projects", url: "portfolio" },
+  { 
+    id: 3, 
+    name: "Professional Experience",
+    url: "experience",
+    subItems: ["Projects", "Leadership Roles", "Community Involvement"]
+  },
+  { 
+    id: 4, 
+    name: "Projects", 
+    url: "projects",
+    subItems: ["Academic Projects", "Personal Projects"]
+  },
   { 
     id: 5, 
-    name: "Certifications", 
+    name: "Credentials", 
     url: "services",
-    subItems: ["Educational", "Workshop", "Licenses"]
+    subItems: ["Education", "Workshop", "Licenses"]
   },
   { 
     id: 6, 
     name: "Workshops", 
     url: "services",
-    subItems: ["Internal", "External"]
+    subItems: ["In-House", "External"]
   },
   { id: 7, name: "Services", url: "services" },
 ];
@@ -102,13 +111,32 @@ const NavBar = () => {
         isMounted ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'
       }`}
     >
-      <div className="navbar flex justify-between mx-auto content max-w-7xl">
-        <div className="flex items-center justify-start flex-1">
-          <div className="dropdown">
+       <div className="navbar flex justify-between w-full px-6 lg:px-12">
+        {/* Title moved to the left */}
+        <Link
+          href="#introduction"
+          to={`introduction`}
+          smooth={true}
+          duration={900}
+          className="flex items-center border-0 lg:max-xxl:ps-0 pl-10 group"
+        >
+          <p className="text-2xl sm:text-[36px] my-auto font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent transition-all duration-700 group-hover:scale-105 group-hover:drop-shadow-xl">
+            Mohamed Sajid
+          </p>
+        </Link>
+
+        {/* Nav menu moved to the right */}
+        <div className="lg:flex items-center ml-auto justify-end">
+          <ul className="hidden lg:flex menu menu-horizontal text-[15px] font-semibold md:shrink-0 items-center space-x-1 justify-end">
+            {menu}
+          </ul>
+
+          {/* Mobile Dropdown */}
+          <div className="dropdown lg:hidden">
             <div 
               tabIndex={0} 
               role="button" 
-              className="btn btn-ghost lg:hidden hover:bg-blue-50 transition-all duration-500 hover:scale-110 hover:shadow-lg rounded-xl"
+              className="btn btn-ghost hover:bg-blue-50 transition-all duration-500 hover:scale-110 hover:shadow-lg rounded-xl"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -133,33 +161,7 @@ const NavBar = () => {
             </ul>
           </div>
 
-          <Link
-            href="#introduction"
-            to={`introduction`}
-            smooth={true}
-            duration={900}
-            className="flex items-center border-0 lg:max-xxl:ps-5 group"
-          >
-            <div className="relative">
-              <img 
-                src={logo} 
-                className="h-10 sm:h-14 rounded-2xl transition-all duration-700 group-hover:scale-110 group-hover:shadow-2xl group-hover:rotate-3" 
-                alt="logo" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-blue-600/10 rounded-2xl group-hover:from-blue-500/30 group-hover:to-blue-600/30 transition-all duration-700 group-hover:blur-sm"></div>
-              {/* Floating animation */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-1000 group-hover:scale-125"></div>
-            </div>
-            <p className="text-2xl sm:text-[36px] my-auto ms-4 font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent transition-all duration-700 group-hover:scale-105 group-hover:drop-shadow-xl">
-              SajidTech
-            </p>
-          </Link>
-        </div>
-
-        <div className="lg:flex items-center ml-auto justify-end">
-          <ul className="hidden lg:flex menu menu-horizontal text-[15px] font-semibold md:shrink-0 items-center space-x-1 justify-end">
-            {menu}
-          </ul>
+          {/* Contact Button */}
           <p className="ml-4">
             <Link
               className="btn btn-sm xs:btn-md sm:btn-lg bg-gradient-to-r from-blue-600 to-blue-700 border-0 text-white hover:from-blue-700 hover:to-blue-800 transform transition-all duration-500 hover:scale-110 shadow-xl hover:shadow-2xl relative overflow-hidden group"
@@ -169,7 +171,6 @@ const NavBar = () => {
               duration={900}
             >
               <span className="relative z-10 transition-all duration-500 group-hover:tracking-wider">Contact</span>
-              {/* Button shine effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             </Link>
           </p>
