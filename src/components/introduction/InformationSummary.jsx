@@ -1,15 +1,21 @@
 const InformationSummary = ({ item }) => {
   return (
-    <div className={`bg-[#F6EBFE] text-center`}>
-      <div className="w-auto h-auto mx-2 sm:mx-4 my-5 xxs:my-5 sm:my-[17px]">
-        <p
-          className={`text-[16px] xxs:text-[18px] sm:text-[32px] font-semibold text-gray-700`}
-        >
+    <div
+      className="
+        bg-gradient-to-r from-blue-600 to-blue-700 
+        text-white text-center rounded-lg shadow-md 
+        mx-1 sm:mx-2 my-5 sm:my-5 py-3 sm:py-4 w-50 sm:w-50
+        transform transition-all duration-500 ease-in-out
+        hover:scale-105 hover:shadow-xl
+        opacity-0 translate-y-4 animate-fadeInUp
+      "
+      style={{ animationDelay: `${item.id * 0.2}s` }}
+    >
+      <div className="flex flex-col justify-center items-center">
+        <p className="text-[14px] xxs:text-[16px] sm:text-[20px] font-semibold">
           {item.description}
         </p>
-        <p
-          className={`text-[8px] xxs:text-[9px] sm:text-[16px] font-normal px-[0.90rem] sm:px-[1rem] text-wrap text-gray-500`}
-        >
+        <p className="text-[8px] xxs:text-[9px] sm:text-[14px] font-normal px-1 sm:px-2 text-wrap">
           {item.title}
         </p>
       </div>

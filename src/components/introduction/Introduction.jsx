@@ -1,23 +1,25 @@
 import person from "../../assets/images/person.png";
 import "./introduction.css";
 import InformationSummary from "./InformationSummary";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 // Information summary data
 const informationSummaryData = [
   {
     id: 1,
-    title: "Experience",
-    description: "15 Y.",
+    title: "Status",
+    description: "Student",
   },
   {
     id: 2,
     title: "Projects Completed",
-    description: "250+",
+    description: "5+",
   },
   {
     id: 3,
-    title: "Happy Clients",
-    description: "58",
+    title: "Professional Experience",
+    description: "1+ Months",
   },
 ];
 
@@ -32,21 +34,28 @@ const Introduction = () => {
           <p className="text-3xl xxs:text-4xl sm:max-xl:text-5xl xl:text-6xl font-semibold w-full">
             Hello, I’m
             <span className="text-nowrap shrink-0 inline-block w-full">
-              Brooklyn Gilbert
+              Mohamed Sajid
             </span>
           </p>
           <p className="text-xs xxs:text-lg lg:text-[18px] my-6">
-            I'm a Freelance <span className="bg-highlight">UI/UX Designer</span>{" "}
-            and <span className="bg-highlight"> Developer</span> based in
-            London, England. I strives to build immersive and beautiful web
-            applications through carefully crafted code and user-centric design.
+            I'm a <span className="bg-highlight">Software Engineer</span> based in
+            Colombo, Sri Lanka. I specialize in building robust, efficient, and
+            user-friendly web applications and Mobile Applications combining clean code with thoughtful
+            design to deliver seamless digital experiences.
           </p>
           <p className="text-center lg:text-start">
             <a
-              className="btn-primary btn btn-xs xxs:btn-lg text-white"
-              href="mailto:example@gmail.com"
+               className="
+               btn btn-xs xxs:btn-lg text-white bg-blue-600 hover:bg-blue-700 
+               transition-all duration-500 ease-in-out transform hover:scale-105 hover:shadow-xl 
+               inline-flex items-center gap-2 animate-fadeInUp
+               "              
+                href="https://www.linkedin.com/in/mohamed-sajid-se"  // replace with your LinkedIn profile URL
+                target="_blank"  // opens in new tab
+                rel="noopener noreferrer"  // security best practice
             >
-              Say Hello!
+              Connect
+              <i className="fas fa-paper-plane"></i> {/* Font Awesome icon */}
             </a>
           </p>
         </div>
