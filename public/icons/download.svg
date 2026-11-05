@@ -1,0 +1,38 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="background" x1="60" y1="40" x2="450" y2="480">
+      <stop offset="0%" stop-color="#2563EB"></stop>
+      <stop offset="50%" stop-color="#0891B2"></stop>
+      <stop offset="100%" stop-color="#4F46E5"></stop>
+    </linearGradient>
+
+    <linearGradient id="border" x1="60" y1="40" x2="450" y2="480">
+      <stop offset="0%" stop-color="#60A5FA"></stop>
+      <stop offset="50%" stop-color="#22D3EE"></stop>
+      <stop offset="100%" stop-color="#818CF8"></stop>
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="12" result="blur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Logo Background -->
+  <rect x="32" y="32" width="448" height="448" rx="120" fill="#0B1220"></rect>
+
+  <!-- Gradient Border -->
+  <rect x="32" y="32" width="448" height="448" rx="120" stroke="url(#border)" stroke-width="10"></rect>
+
+  <!-- Subtle Background Glow -->
+  <rect x="45" y="45" width="422" height="422" rx="108" fill="url(#background)" opacity="0.12"></rect>
+
+  <!-- MS Letters -->
+  <text x="256" y="305" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="190" font-weight="800" letter-spacing="-15" fill="white">MS</text>
+
+  <!-- Accent Dot -->
+  <circle cx="390" cy="155" r="19" fill="#22D3EE" filter="url(#glow)"></circle>
+</svg>

@@ -3,40 +3,53 @@
 @import "tailwindcss";
 
 /* =========================================
+   TAILWIND THEME CONFIGURATION
+========================================= */
+
+/* =========================================
    LIGHT THEME
 ========================================= */
 
 :root {
   color-scheme: light;
+  --font-sans: "Inter", sans-serif;
 
+  /* Global Colours */
   --background: #f4f7fb;
   --foreground: #172033;
   --muted: #526078;
 
+  /* Surfaces */
   --surface: #ffffff;
   --surface-secondary: #f8fafc;
 
+  /* Borders */
   --border: rgba(51, 65, 85, 0.16);
 
+  /* Accent Colours */
   --accent: #0369a1;
   --accent-2: #4f46e5;
 
+  /* Navbar Glow */
   --nav-glow: #0284c7;
   --nav-glow-secondary: #6366f1;
   --nav-glow-shadow: rgba(2, 132, 199, 0.16);
 
+  /* Logo */
   --logo-border: rgba(3, 105, 161, 0.35);
   --logo-color-1: rgba(3, 105, 161, 0.13);
   --logo-color-2: rgba(79, 70, 229, 0.10);
 
+  /* Navbar Background */
   --nav-background: rgba(255, 255, 255, 0.86);
   --nav-panel: rgba(255, 255, 255, 0.98);
 
+  /* Navbar Text */
   --nav-text: #172033;
   --nav-muted: #46546b;
-
   --nav-hover: rgba(2, 132, 199, 0.08);
 
+  /* Shadows */
   --shadow: 0 18px 55px rgba(30, 41, 59, 0.12);
 }
 
@@ -47,34 +60,42 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
+  /* Global Colours */
   --background: #080d18;
   --foreground: #f4f7fc;
   --muted: #a5b1c4;
 
+  /* Surfaces */
   --surface: #101a2b;
   --surface-secondary: #111e32;
 
+  /* Borders */
   --border: rgba(148, 163, 184, 0.20);
 
+  /* Accent Colours */
   --accent: #38bdf8;
   --accent-2: #a78bfa;
 
+  /* Navbar Glow */
   --nav-glow: #38bdf8;
   --nav-glow-secondary: #a78bfa;
   --nav-glow-shadow: rgba(56, 189, 248, 0.22);
 
+  /* Logo */
   --logo-border: rgba(56, 189, 248, 0.48);
   --logo-color-1: rgba(56, 189, 248, 0.23);
   --logo-color-2: rgba(167, 139, 250, 0.16);
 
+  /* Navbar Background */
   --nav-background: rgba(8, 15, 29, 0.78);
   --nav-panel: rgba(11, 20, 36, 0.97);
 
+  /* Navbar Text */
   --nav-text: #f3f6fc;
   --nav-muted: #b4bfd0;
-
   --nav-hover: rgba(56, 189, 248, 0.08);
 
+  /* Shadows */
   --shadow: 0 18px 55px rgba(0, 0, 0, 0.30);
 }
 
@@ -82,27 +103,57 @@
    GLOBAL RESET
 ========================================= */
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
+  width: 100%;
+  min-height: 100%;
+
   scroll-behavior: smooth;
+
+  overflow-x: clip;
+
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
+  width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
+
+  margin: 0;
+  padding: 0;
 
   background: var(--background);
   color: var(--foreground);
 
   font-family: "Inter", sans-serif;
 
+  overflow-x: clip;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-rendering: optimizeLegibility;
+
   transition:
     background 0.3s ease,
     color 0.3s ease;
+}
+
+/* =========================================
+   GLOBAL ELEMENTS
+========================================= */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 button,
@@ -111,7 +162,7 @@ a {
 }
 
 button {
-  font: inherit;
+  cursor: pointer;
 }
 
 a {
@@ -119,17 +170,84 @@ a {
   text-decoration: none;
 }
 
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================
+   HERO NAME - LETTER BY LETTER ANIMATION
+========================================= */
+
+@keyframes nameLetterReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(25px) scale(0.85);
+    filter: blur(8px);
+  }
+
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
 /* =========================================
    NAVBAR ONLY STAGE
 ========================================= */
 
 .navbar-only-stage {
+  position: relative;
+
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
 
-  padding: 25px 4%;
+  margin: 0;
+  padding: 0;
 
   background: var(--background);
+
+  overflow-x: clip;
 
   transition: background 0.3s ease;
 }

@@ -1,23 +1,25 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-images: {
-remotePatterns: [
-{
-protocol: "https",
-hostname: "drive.google.com",
-},
-],
-},
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "drive.google.com",
+      },
+    ],
+  },
 
-turbopack: {
-rules: {
-"*.css": {
-loaders: ["@tailwindcss/turbopack"],
-as: "*.css",
-},
-},
-},
+  devIndicators: false,
+
+  turbopack: {
+    rules: {
+      "*.css": {
+        loaders: ["@tailwindcss/turbopack"],
+        as: "*.css",
+      },
+    },
+  },
 };
 
 export default nextConfig;
