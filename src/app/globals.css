@@ -1,173 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
 @import "tailwindcss";
 
-/* ========================================
-   SAJID.DEV — GLOBAL DESIGN SYSTEM
-   Premium dark navy, electric blue & glass
-======================================== */
+/* =========================================
+   LIGHT THEME
+========================================= */
 
 :root {
+  color-scheme: light;
+
+  --background: #f4f7fb;
+  --foreground: #172033;
+  --muted: #526078;
+
+  --surface: #ffffff;
+  --surface-secondary: #f8fafc;
+
+  --border: rgba(51, 65, 85, 0.16);
+
+  --accent: #0369a1;
+  --accent-2: #4f46e5;
+
+  --nav-glow: #0284c7;
+  --nav-glow-secondary: #6366f1;
+  --nav-glow-shadow: rgba(2, 132, 199, 0.16);
+
+  --logo-border: rgba(3, 105, 161, 0.35);
+  --logo-color-1: rgba(3, 105, 161, 0.13);
+  --logo-color-2: rgba(79, 70, 229, 0.10);
+
+  --nav-background: rgba(255, 255, 255, 0.86);
+  --nav-panel: rgba(255, 255, 255, 0.98);
+
+  --nav-text: #172033;
+  --nav-muted: #46546b;
+
+  --nav-hover: rgba(2, 132, 199, 0.08);
+
+  --shadow: 0 18px 55px rgba(30, 41, 59, 0.12);
+}
+
+/* =========================================
+   DARK THEME
+========================================= */
+
+:root[data-theme="dark"] {
   color-scheme: dark;
 
-  --background: #070b14;
-  --foreground: #f4f7fb;
+  --background: #080d18;
+  --foreground: #f4f7fc;
+  --muted: #a5b1c4;
 
-  --muted: #9ba8bc;
-  --muted-foreground: #718096;
+  --surface: #101a2b;
+  --surface-secondary: #111e32;
 
-  --surface: #0d1422;
-  --surface-elevated: #111b2d;
-
-  --border: rgb(148 163 184 / 14%);
-  --border-highlight: rgb(56 189 248 / 35%);
+  --border: rgba(148, 163, 184, 0.20);
 
   --accent: #38bdf8;
-  --accent-secondary: #818cf8;
-  --accent-glow: rgb(56 189 248 / 15%);
+  --accent-2: #a78bfa;
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --nav-glow: #38bdf8;
+  --nav-glow-secondary: #a78bfa;
+  --nav-glow-shadow: rgba(56, 189, 248, 0.22);
+
+  --logo-border: rgba(56, 189, 248, 0.48);
+  --logo-color-1: rgba(56, 189, 248, 0.23);
+  --logo-color-2: rgba(167, 139, 250, 0.16);
+
+  --nav-background: rgba(8, 15, 29, 0.78);
+  --nav-panel: rgba(11, 20, 36, 0.97);
+
+  --nav-text: #f3f6fc;
+  --nav-muted: #b4bfd0;
+
+  --nav-hover: rgba(56, 189, 248, 0.08);
+
+  --shadow: 0 18px 55px rgba(0, 0, 0, 0.30);
 }
 
-/* Tailwind CSS v4 theme configuration */
+/* =========================================
+   GLOBAL RESET
+========================================= */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-/* Global reset */
-
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-  min-height: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
-  background: var(--background);
 }
 
 body {
   min-height: 100vh;
-  margin: 0;
+
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+
+  font-family: "Inter", sans-serif;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
-/* Text selection */
-
-::selection {
-  background: rgb(56 189 248 / 30%);
-  color: #ffffff;
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Links */
+button {
+  font: inherit;
+}
 
 a {
   color: inherit;
   text-decoration: none;
 }
 
-a,
-button {
-  -webkit-tap-highlight-color: transparent;
-}
+/* =========================================
+   NAVBAR ONLY STAGE
+========================================= */
 
-/* Form controls */
+.navbar-only-stage {
+  width: 100%;
+  min-height: 100vh;
 
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
+  padding: 25px 4%;
 
-button {
-  color: inherit;
-}
+  background: var(--background);
 
-/* Accessible keyboard focus */
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-}
-
-/* Media elements */
-
-img,
-video,
-canvas,
-svg {
-  max-width: 100%;
-}
-
-img,
-video {
-  display: block;
-}
-
-/* Smooth transitions for interactive elements */
-
-a,
-button,
-input,
-textarea,
-select {
-  transition:
-    color 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    opacity 180ms ease;
-}
-
-/* Shared glass effect */
-
-.glass {
-  border: 1px solid var(--border);
-  background: rgb(17 27 45 / 65%);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-}
-
-/* Subtle blue ambient glow */
-
-.ambient-glow {
-  background:
-    radial-gradient(
-      ellipse at 20% 0%,
-      rgb(56 189 248 / 9%),
-      transparent 45%
-    ),
-    radial-gradient(
-      ellipse at 85% 20%,
-      rgb(129 140 248 / 8%),
-      transparent 40%
-    );
-}
-
-/* Reduced motion accessibility */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+  transition: background 0.3s ease;
 }
